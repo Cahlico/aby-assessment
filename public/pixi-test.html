@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pixi Test</title>
+    <style>
+        body { margin: 0; padding: 20px; background: #333; }
+        #container { width: 800px; height: 600px; background: #1a1a1a; }
+    </style>
+</head>
+<body>
+    <h1 style="color: white;">Pixi.js Image Loading Test</h1>
+    <div id="container"></div>
+    <script type="module">
+        import { Application, Sprite, Texture } from 'https://cdn.jsdelivr.net/npm/pixi.js@8/dist/pixi.min.mjs';
+        
+        const app = new Application();
+        
+        await app.init({
+            background: '#1a1a1a',
+            width: 800,
+            height: 600
+        });
+        
+        document.getElementById('container').appendChild(app.canvas);
+        
+        // Test with a public image
+        const texture = Texture.from('https://picsum.photos/400/300');
+        const sprite = new Sprite(texture);
+        sprite.anchor.set(0.5);
+        sprite.x = 400;
+        sprite.y = 300;
+        
+        app.stage.addChild(sprite);
+        
+        console.log('Pixi test loaded, sprite added');
+    </script>
+</body>
+</html>
